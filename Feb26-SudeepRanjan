@@ -1,0 +1,180 @@
+1)Create an arraylist and do the following operations:
+Add 6 fruits
+Add 2 cities
+Add 2 hobbies
+Print arraylist
+Remove 1 hobby
+Search (“cricket”)
+Remove 1 city and 1 fruit
+Print 4th and 6th element together
+Replace hobby "Singing" with new hobby "Dancing"
+Reverse the arraylist
+Add "Kerala" at 4th position and "Mango" at 2nd position
+Find length of arraylist
+Remove all elements from arraylist
+
+import java.util.ArrayList;
+import java.util.Collections;
+class Main {
+    public static void main(String[] args) {
+        ArrayList<String> arr = new ArrayList<String>();
+        //add 6 fruits
+        arr.add("Banana");
+        arr.add("Apple");
+        arr.add("Pear");
+        arr.add("Papaya");
+        arr.add("Watermelon");
+        arr.add("Jackfruit");
+        //add 2 cities
+        arr.add("Bengaluru");
+        arr.add("Mysuru");
+        //add 2 hobbies
+        arr.add("Singing");
+        arr.add("Running");
+        //print arraylist
+        System.out.println(arr);
+        //remove 1 hobby
+        arr.remove("Running");
+        //search "Cricket"
+        boolean cricketExists = arr.contains("Cricket");
+        System.out.println("Cricket exists?: "+cricketExists);
+        //remove 1 city and 1 fruit
+        arr.remove("Mysuru");
+        arr.remove("Jackfruit");
+        //print 4th and 6th element together
+        System.out.println("4th element: "+arr.get(3)+", 6th element: "+arr.get(5));
+        //replace hobby "Singing" with new hobby "Dancing"
+        int index_sing = arr.indexOf("Singing");
+        arr.set(index_sing, "Dancing")        
+        //reverse the arraylist
+        Collections.reverse(arr);
+        //add "Kerala" at 4th position and "Mango" at 2nd position
+        arr.add(3,"Kerala");
+        arr.add(1,"Mango");
+        //find length of arraylist
+        System.out.println("Length of arraylist: "+arr.size());
+        //remove all elements from arraylist
+        arr.clear();
+}
+}
+
+2) Use LinkedList only in the below program
+   - Add  6 months (May, June, July, August, April, November)
+   - Add 'December' month as last
+   - Add 'January' month as first
+   - Add 'March' and then add 'February' using the index based 
+   - Add 'September' and then add 'October' using the index based
+
+(1) Print the linkedlist in such a way that proper order of months are displayed
+(2) Get all the even months and print them 
+(3) Get all the odd months and print them
+(4) Use iterator to fetch and print all months 
+(5) Print the first and last month of the year together
+(6) remove your birthday month from the linkedList and print it
+(7) Check whether this linkedList contains any winter month inside it or not?
+(8) Fetch the first and last months using peek()
+(9) Remove the first and last months using poll()
+import java.util.LinkedList;
+import java.util.Collections;
+import java.util.Iterator;
+class Main {
+    public static void main(String[] args) {
+        LinkedList<String> arr = new LinkedList<String>();
+        arr.add("May");
+        arr.add("June");
+        arr.add("July");
+        arr.add("August");
+        arr.add("April");
+        arr.add("November");
+        arr.addLast("December");
+        arr.addFirst("January");
+        arr.add(1,"March");
+        arr.add(1,"Febuary");
+        arr.add(7,"September");
+        arr.add(8,"October");
+        //System.out.println(arr);
+        arr.remove("April");
+        arr.add(3,"April");
+        System.out.println("Correct order: "+arr);
+        System.out.println("Even Months:");
+        for (int i = 0;i<arr.size();i++){
+            if (i%2!=0){
+                System.out.println(arr.get(i));
+            }
+        }
+        System.out.println("Odd Months:");
+        for (int i = 0;i<arr.size();i++){
+            if (i%2==0){
+                System.out.println(arr.get(i));
+            }
+        }
+        System.out.println("Using Iterator:");
+        Iterator<String> it = arr.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
+        System.out.println("First Month: "+arr.get(0)+", Last Month: "+arr.get(11));
+        //remove bday month
+        String bday_month = arr.get(7);
+        arr.remove(bday_month);
+        System.out.println("Month removed: "+bday_month);
+        //check if it has winter month
+        boolean check_winter_month = false;
+        if (arr.contains("January") || arr.contains("December") || arr.contains("November")){
+            System.out.println("Yes, Winter months exist in arraylist.");
+        }
+        else{
+            System.out.println("Winter months do not exist in arraylist.");
+        }
+        System.out.println("First Month: "+arr.peekFirst()+", Last Month: "+arr.peekLast());
+        arr.pollLast();
+        arr.pollFirst();
+        System.out.println(arr);
+        
+    }
+}
+
+3) Hashmaps, creation, addition of elements, merging, sorting, etc.
+
+import java.util.HashMap;
+import java.util.TreeMap;
+import java.util.Map;
+import java.util.Collections;
+import java.util.Iterator;
+class Main {
+    public static void main(String[] args) {
+       HashMap<Integer,String>countries=new HashMap<>();
+       countries.put(91,"India");
+       countries.put(45,"Denmark");
+       countries.put(49,"Germany");
+       countries.put(33,"France");
+       countries.put(81,"Japan");
+       countries.put(86,"China");
+       countries.put(1,"USA");
+       countries.put(55,"Brazil");
+       countries.put(44,"UK");
+       countries.put(61,"Australia");
+       System.out.println("All keys: "+countries.keySet());
+       System.out.println("All values: "+countries.values());
+       boolean india_exists = countries.containsValue("India");
+       System.out.println("India exists?: "+india_exists);
+       boolean key45_exists = countries.containsKey(45);
+       System.out.println("Key 45 exists?: "+key45_exists);
+       countries.remove(1);
+       HashMap<Integer,String>states=new HashMap<>();
+       states.put(5,"Uttarakhand");
+       states.put(19,"West Bengal");
+       states.put(7,"Delhi");
+       states.put(9,"Uttar Pradesh");
+       states.put(33,"Tamil Nadu");
+       countries.putAll(states);
+       states.remove(5);
+       System.out.println("State Map empty? : "+states.isEmpty());
+       states.clear();
+       //sorting
+        Map<Integer,String> sorted_map = new TreeMap<>(countries);
+        System.out.println(sorted_map);
+       
+    }
+}
+

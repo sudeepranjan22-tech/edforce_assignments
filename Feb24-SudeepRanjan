@@ -1,0 +1,116 @@
+1)	Dynamic polymorphism.
+Class Shape(parent)-> class Rectangle(l,b), class Triangle (bs,hs), class Square(s1,s2), class Rhombus(d1,d2) -> Area of Shapes must be calculated from public void area(arguments){}
+
+class Shape{
+    public void area(double a,double b){
+        
+    }
+}
+class Rectangle extends Shape{
+    public void area(double l,double b){
+        System.out.println("Rectangle Area: "+ l*b);
+    }
+}
+class Triangle extends Shape{
+    public void area(double bs, double hs){
+        System.out.println("Triangle Area: "+0.5*bs*hs);
+    }
+}
+class Square extends Shape {
+    public void area(double s1, double s2){
+        System.out.println ("Square Area: "+s1*s2);
+    }
+}
+class Rhombus extends Shape{
+    public void area(double d1, double d2){
+        System.out.println ("Rhombus Area: "+0.5 * d1 * d2);
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Shape obj;
+        obj=new Rectangle();
+        obj.area(5,6);
+        obj=new Triangle();
+        obj.area(7,8);
+        obj=new Square();
+        obj.area(6,6);
+        obj=new Rhombus();
+        obj.area(4,5);
+    }
+}
+
+2)	Inheritance
+class Product{
+    public Product(){
+        int id=78;
+        String name="Amul";
+    }
+    void display(int id, String name){
+        System.out.println("ID:"+id+", Name:"+name);
+    }
+}
+class A extends Product{
+    public A(){
+        int count=50;
+        String category = "butter";
+    }
+    void display(int count, String category){
+        System.out.println("Count:"+count+", Category:"+category);
+    }
+}
+class B extends Product{
+    public B(){
+        int count=90;
+        String category = "milk";
+    }
+    void display(int count, String category){
+        System.out.println("Count:"+count+", Category:"+category);
+    }
+}
+class C extends Product{
+    public C(){
+        int count=56;
+        String category = "chocos";
+    }
+    void display(int count, String category){
+        System.out.println("Count:"+count+", Category:"+category);
+    }
+}
+class SubA extends A{
+    public SubA(){
+        int price=30;
+    }
+    void calculate(int count,int price, int id, String name, String category){
+        int total=count*price;
+        System.out.println("Total Price: "+total);
+        System.out.println("ID: "+id);
+        System.out.println("Name: "+name);
+        System.out.println("Category: "+category);
+    }
+}
+class SubB extends B{
+    public SubB(){
+        int price=10;
+    }
+    void calculate(int count,int price, int id, String name, String category){
+        int total=count*price;
+        System.out.println("Total Price: "+total);
+        System.out.println("ID: "+id);
+        System.out.println("Name: "+name);
+        System.out.println("Category: "+category);
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        SubA obj1=new Product();
+        obj1.display();
+        obj1.calculate();
+        SubB obj2=new Product();
+        obj2.display();
+        obj2.calculate();
+        
+    }
+}
+

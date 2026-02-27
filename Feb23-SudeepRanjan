@@ -1,0 +1,156 @@
+(1)Product Discount
+Write a method getFinalAmount(double amount, boolean isMember) using nested if–else:
+- If amount ≥ 1000
+    - If customer is member then give 20% discount
+    - Else give 10% discount
+- Else give no discount
+class ProductDiscount{
+    public static void main (String[]args){
+       double amount=1500.0 ;
+       boolean isMember=true;
+       ProductDiscount obj=new ProductDiscount();
+       double finalamt=obj.getFinalAmount(amount, isMember);
+       System.out.println("Final amount: "+finalamt);
+    }
+    public double getFinalAmount(double amount, boolean isMember){
+        double discount=0.0;
+        if (amount>=1000){
+            if (isMember){
+                discount=0.2;
+            }
+            else{
+                discount=0.1;
+            }
+        }
+        else{
+            discount=0.0;
+        }
+        return amount-(discount*amount);
+        }
+    }
+(2) Smart Billing Slab (no nested if allowed)
+Write a method:   double calculateBill(double amount, boolean isFirstOrder)
+
+Rules (use only if – else, no nested if):
+- If amount < 500 give no discount
+- If amount ≥ 500 and < 1500  give 5% discount
+- If amount ≥ 1500 give 10% discount
+- If it is first order, give extra 2% discount on the final amount
+
+You must combine conditions correctly without using nested if.
+class Main {
+    public static void main(String[] args) {
+        boolean isFirstOrder=true;
+        double amount=1490;
+        Main obj=new Main();
+        double finamt=obj.calculateBill(amount,isFirstOrder);
+        System.out.println("The final amount: "+ finamt);
+    }
+    public double calculateBill(double amount,boolean isFirstOrder){
+        double discount=0.0;
+        if (amount<500){
+            discount=0.0;
+        }
+        else if(amount>=500 && amount<1500){
+            discount=0.05;
+        }
+        else if(amount>=1500){
+            discount=0.1;
+        }
+        double finalamt=amount-(discount*amount);
+        if (isFirstOrder){
+            finalamt=finalamt-(0.02*finalamt);
+        }
+        return finalamt;
+    }
+}
+(3) Bank Loan Approval Logic
+Write a method:  String loanDecision(int age, int salary, int creditScore)
+
+Rules using nested if–else:
+ If age ≥ 21
+    If salary ≥ 25000
+         If creditScore ≥ 700  print Approved
+         Else print Rejected – Low credit score
+    Else print Rejected – Low salary
+ Else print Rejected – Under age
+class Main {
+    public static void main(String[] args) {
+        int age=22;
+        int salary=30000;
+        int creditScore=750;
+        Main obj=new Main();
+        String result=obj.loanDecision(age, salary, creditScore);
+        System.out.println(result);
+    }
+    public String loanDecision(int age, int salary, int creditScore){
+        String res="";
+        if (age>=21){
+            if (salary>=25000){
+                if (creditScore>=700){
+                    res="Approved";
+                }
+                else{
+                    res="Low credit score";
+                }
+            }
+            else{
+                res="Low salary";
+            }
+        }
+        else{
+            res="Under age";
+        }
+        return res;
+    }
+}
+4) Create a method getPrice(int productid) that returns the price of the product. Pen:10, Book: 20, else -1. 
+Create a method calculateTotal(double price, int qty) that returns total amount. 
+Create overloaded methods:
+ printProduct(int id), 
+printProduct(int id, String name), 
+printProduct(int id, String name, double price)
+They must print the values they receive.
+class Main {
+    public static void main(String[] args) {
+        String name="Sudeep Ranjan";
+        int productId=1;
+        int qty=5;
+        Main obj=new Main();
+        double price = obj.getPrice(productId);
+        if (price<0){
+            System.out.println("Invalid product ID, price cannot be less than 0.");
+            System.exit(0);
+        }
+        double total = obj.calculateTotal(price,qty);
+        obj.printProduct(productId);
+        obj.printProduct(productId,name);
+        obj.printProduct(productId,name,total);
+        
+    }
+    public double getPrice(int productId){
+        if (productId==1){
+            return 10.0;
+        }
+        else if (productId==2){
+            return 50.0;
+        }
+        else {
+            return -1;
+        }
+    }
+    public double calculateTotal(double price, int qty){
+        return price*qty;
+    }
+    public void printProduct(int id){
+        System.out.println("ID:"+id);
+    }
+    public void printProduct(int id, String name){
+        System.out.println("ID:"+id+" Name:"+name);
+    }
+    public void printProduct(int id, String name, double price){
+        System.out.println("ID:"+id+" Name:"+name+" Price:"+price);
+    }
+}
+
+

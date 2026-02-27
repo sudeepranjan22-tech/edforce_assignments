@@ -1,0 +1,40 @@
+1)	Custom exception and user input:
+Accept salary from user using Scanner class. Return custom exceptions based on conditions.
+salary<2100: “you need to work hard”
+2100<=salary<5000: “your salary is somehow good”
+5000<=salary<9000: “your salary is very good”
+
+import java.util.Scanner;
+class SalaryException extends Exception{
+    public SalaryException(String message){
+        super(message);
+    }
+}
+class Main {
+    public void checkSal(int salary)throws SalaryException{
+        if (salary<2100){
+            throw new SalaryException("You need to work hard.");
+        }
+        else if (2100<=salary && salary<5000){
+            throw new SalaryException("Your salary is somehow good.");
+        }
+        else if (5000<=salary && salary<9000){
+            throw new SalaryException("Your salary is very good.");
+    }
+    }
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your salary: ");
+        int salary = sc.nextInt();
+        Main obj = new Main();
+        try{
+            obj.checkSal(salary);
+        }
+        catch (SalaryException se){
+            System.out.println(se.getMessage());
+        }
+    }
+
+
+
