@@ -1,0 +1,28 @@
+select products.product_name,categories.category_name, suppliers.supplier_name from products join categories on products.category_id=categories.category_id join suppliers on suppliers.supplier_id=products.supplier_id;
+
+select product_name from products where stock_quantity<5;
+
+alter table products add column discount_percent decimal default 0;
+
+update products set price=price-(price*0.15);
+
+select count(product_name) from products;
+
+select avg(price) from products;
+
+select max(products.price) from products join categories on products.category_id=categories.category_id where category_name="Electronics";
+select min(products.price) from products join categories on products.category_id=categories.category_id where category_name="Electronics";
+
+select category_name, COUNT(product_id) from categories join products on categories.category_id=products.category_id group by category_name;
+
+select suppliers.supplier_name,products.price from products join suppliers on products.supplier_id=suppliers.supplier_id where products.price between 50 and 200;
+
+select * from products where category_id in (1,3);
+
+select category_id, sum(stock_quantity) from products group by category_id having count(product_id)>1;
+
+select supplier_id, avg(price) from products group by supplier_id having avg(price)>100;
+
+select * from products order by price desc;
+
+select category_id, sum(price*stock_quantity) as total_value from products group by category_id order by total_value desc;
